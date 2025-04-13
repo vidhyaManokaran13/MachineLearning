@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Prediction History</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="history.html">Prediction History</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <form id="history-form">
+      <h2>Enter Property Info for Graph</h2>
+      <input type="number" name="bedrooms" placeholder="Bedrooms" required />
+      <input type="number" name="bathrooms" placeholder="Bathrooms" required />
+      <input type="number" name="sqft" placeholder="Square Footage" required />
+      <input type="number" name="yearBuilt" placeholder="Year Built" required />
+      <input type="number" name="future_year" placeholder="Future Year" required />
+      <button type="submit">Show Prediction History</button>
+    </form>
+
+    <div id="graph-section">
+      <h3>Predicted Price Graph:</h3>
+      <img id="history-graph" src="" alt="Prediction Graph" style="max-width:100%; display:none;" />
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Zillow ML Predictor</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("history-form");
+    const graphImg = document.getElementById("history-graph");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const response = await fetch("http://127.0.0.1:8000/history-predict", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        graphImg.src = "http://127.0.0.1:8000/history-predict?" + new URLSearchParams([...formData]).toString();
+        graphImg.style.display = "block";
+      } else {
+        alert("Error loading graph");
+      }
+    });
+  </script>
+</body>
+</html>

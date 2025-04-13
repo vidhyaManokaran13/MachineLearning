@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zillow Home Price Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Zillow Home Price Predictor</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="history.html">Prediction History</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" class="banner" alt="House Banner"/>
+    <form id="predict-form">
+      <h2>Enter Property Details</h2>
+      <input type="number" id="bedrooms" name="bedrooms" placeholder="Bedrooms" required />
+      <input type="number" id="bathrooms" name="bathrooms" placeholder="Bathrooms" required />
+      <input type="number" id="sqft" name="sqft" placeholder="Square Footage" required />
+      <input type="number" id="future_year" name="future_year" placeholder="Year to Predict For (e.g. 2025)" required />
+      <button type="submit">Predict Price</button>
+    </form>
+    
+    
+    <p id="result"></p>
+    
+
+    <p id="result"></p>
+    <p id="future-result"></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Zillow ML Predictor | Built with ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
